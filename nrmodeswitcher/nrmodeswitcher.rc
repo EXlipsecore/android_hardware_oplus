@@ -3,3 +3,9 @@ service vendor.nrmodeswitcher /vendor/bin/nrmodeswitcher
     user radio
     group radio
     oneshot
+
+on property:sys.boot_completed=1
+    start vendor.nrmodeswitcher
+
+on property:gsm.sim.operator.numeric=*
+    start vendor.nrmodeswitcher
